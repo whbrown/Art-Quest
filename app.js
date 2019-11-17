@@ -68,7 +68,7 @@ app.locals.title = 'Art Quest';
 // Enable authentication using session + passport
 app.use(
   session({
-    secret: 'irongenerator',
+    secret: AUTH_SECRET,
     resave: true,
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),

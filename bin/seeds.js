@@ -10,8 +10,7 @@ const bcrypt = require('bcrypt');
 const fs = require('fs');
 const https = require('https');
 const request = require('request');
-const JSONStream = require('JSONStream');
-const es = require('event-stream');
+
 const User = require('../models/User');
 const Object = require('../models/Object');
 
@@ -47,7 +46,7 @@ function filterCollectionJSON(collection, displayedObjs) {
   console.log('done');
 }
 // filterCollectionJSON(fullMetCollection, onDisplayIDs);
-/*
+
 mongoose
   .connect('mongodb://localhost/art-quest', { useNewUrlParser: true })
   .then(x => {
@@ -63,7 +62,7 @@ mongoose
   .catch(err => {
     console.error('Error connecting to mongo', err);
   });
-*/
+
 let users = [
   // TODO
 ];

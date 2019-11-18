@@ -30,15 +30,15 @@ http
 */
 
 http
-.createServer((req, res) => {
-  // This opens up the writeable stream to `output`
-  const readStream = fs.createReadStream(csvFilePath);
-  const writeStream = fs.createWriteStream(jsonFilePath);
+  .createServer((req, res) => {
+    // This opens up the writeable stream to `output`
+    const readStream = fs.createReadStream(csvFilePath);
+    const writeStream = fs.createWriteStream(jsonFilePath);
 
     writeStream.on('pipe', () => {
       console.log('Began piping to writer.');
     });
-    
+
     readStream.pipe().pipe(writeStream);
 
     writeStream.on('error', function(err) {
@@ -50,4 +50,3 @@ http
     });
   })
   .listen(8080);
-*/

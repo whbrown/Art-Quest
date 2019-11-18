@@ -6,7 +6,7 @@ const http = require('http');
 const csvFilePath = './met_collection_DB/full-met-collection.csv';
 const jsonFilePath = `./met_collection_DB/full-met-collection.json`;
 
-/*
+
 http
 .createServer((req, res) => {
   // This opens up the writeable stream to `output`
@@ -27,8 +27,8 @@ http
     });
   })
   .listen(8080);
-*/
 
+/*
 http
   .createServer((req, res) => {
     // This opens up the writeable stream to `output`
@@ -50,3 +50,4 @@ http
     });
   })
   .listen(8080);
+*/

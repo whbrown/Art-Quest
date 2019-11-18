@@ -26,7 +26,7 @@ function download(url, filepath) {
 const fullMetCollection = JSON.parse(
   JSON.stringify(require('../met_collection_DB/full-met-collection.json'))
 );
-
+/*
 const onDisplayIDs = JSON.parse(
   JSON.stringify(require('../met_collection_DB/onDisplayObjectIDs.json'))
 );
@@ -46,7 +46,7 @@ function filterCollectionJSON(collection, displayedObjs) {
   console.log('done');
 }
 // filterCollectionJSON(fullMetCollection, onDisplayIDs);
-
+*/
 mongoose
   .connect('mongodb://localhost/art-quest', { useNewUrlParser: true })
   .then(x => {

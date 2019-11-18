@@ -8,8 +8,10 @@
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.3",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^2.0.1",
@@ -19,6 +21,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "hbs": "^4.0.1",
+    "http-parser-js": "^0.5.2",
     "mongoose": "^5.2.10",
     "morgan": "^1.9.0",
     "node-sass-middleware": "^0.11.0",

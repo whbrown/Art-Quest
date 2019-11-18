@@ -15,16 +15,21 @@ let testArray= [7984, 7994, 8029, 8007, 8025, 8030, 8031, 8018, 7999, 8016,
   7911, 7905, 7915, 7921, 7927, 7928, 7902, 7883, 7887, 7888,
   7914, 7885, 7889, 7882, 7926, 7890, 7903, 7916, 7923, 7930];
 
-const testRetrieval = () => {
-  Promise.all(testArray.map(item => {
-    setInterval(function() {
-      return getLocationDescription(item);
-    },500)
-  }))
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
-}
+let resultArray = [];
+let counter = 0;
+let arrayLength = testArray.length;
 
+// let writerStream = fs.createWriteStream('output1.txt');
+// writerStream.write(data,'UTF8');
+
+let testRetrieval = setInterval(() => {
+  getLocationDescription(testArray[counter])
+  console.log(resultArray)
+  counter +=1;
+  if (counter === arrayLength) {
+    clearInterval(testRetrieval);
+  }
+}, 1000);
 
 
 const getOnDisplayItems = () => {
@@ -46,11 +51,11 @@ const getLocationDescription = (objectId) => {
           const $ = cheerio.load(html);
           const description = $(".artwork__intro__desc").text()
           const location =  $(".artwork__location--gallery").text()
-          return {
+          resultArray.push({
             objectId: objectId,
             location: location,
             description: description.replace(/^\s+|\s+$/g, '')
-          }
+          })
         }  
       })
       .catch(err => {
@@ -60,4 +65,3 @@ const getLocationDescription = (objectId) => {
 
 //getLocationDescription(`https://www.metmuseum.org/art/collection/search/436524`);
 //getOnDisplayItems()
-testRetrieval()

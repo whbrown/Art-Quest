@@ -22,7 +22,6 @@ var stream = fs.createWriteStream("itemLocationsDescriptions.txt", {flags:'a'});
 
 let testRetrieval = setInterval(() => {
   getLocationDescription(testArray[counter])
-  console.log(resultArray)
   counter +=1;
   if (counter === arrayLength) {
     stream.end();

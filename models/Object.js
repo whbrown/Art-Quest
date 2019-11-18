@@ -9,11 +9,8 @@ const objectSchema = new Schema({
     type: String,
     required: true,
   },
-  'Is Highlight': {
-    type: Boolean,
-    default: false,
-  },
-  'Is Public Domain': Boolean,
+  'Is Highlight': String,
+  'Is Public Domain': String,
   'Object ID': {
     type: String,
     required: true,
@@ -33,11 +30,12 @@ const objectSchema = new Schema({
   'Artist Suffix': String,
   'Artist Alpha Sort': String,
   'Artist Nationality': String,
-  'Artist Begin Date': Date,
-  'Artist End Date': Date,
-  'Object Date': String, // can't use { type: Date } due to issues with this field using date ranges (e.g. 1852-58), or approximations (e.g. ca. 1800), will require regex to parse if used as a relevant field for weighing preferences.
-  'Object Begin Date': Date,
-  'Object End Date': Date,
+  'Artist Begin Date': String,
+  'Artist End Date': String,
+  'Object Date': String, // can't use { type: Date } due to issues with this field using date ranges (e.g. 1852-58),
+  // or approximations (e.g. ca. 1800), will require regex to parse if used as a relevant field for weighing preferences.
+  'Object Begin Date': String,
+  'Object End Date': String,
   Medium: String,
   Dimensions: String,
   'Credit Line': String,
@@ -60,5 +58,5 @@ const objectSchema = new Schema({
   Tags: String,
 });
 
-const Object = mongoose.model('Object', objectSchema);
+const Object = mongoose.model('Full-collection', objectSchema);
 module.exports = Object;

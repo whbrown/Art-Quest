@@ -7,9 +7,28 @@
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const https = require('https');
+const fs = require('fs');
+const csvtojson = require('csvtojson')
 const User = require('../models/User');
 
 const bcryptSalt = 10;
+
+function download(url, filepath, cb) {
+  const file = fs.createWriteStream(filepath);
+  const request = https
+    .get(url, response => {
+      response.pipe(file);
+    })
+    .on('error', err => {
+      // Handle errors
+      console.error(err);
+      fs.unlink(filepath);
+      if (cb) cb(err.message);
+    });
+}
+
+function jsonconversion()
 
 mongoose
   .connect('mongodb://localhost/art-quest', { useNewUrlParser: true })
@@ -26,17 +45,17 @@ let users = [
   // TODO
 ];
 
-User.deleteMany()
-  .then(() => User.create(users))
-  .then(usersCreated => {
-    console.log(`${usersCreated.length} users created with the following id:`);
-    console.log(usersCreated.map(u => u._id));
-  })
-  .then(() => {
-    // Close properly the connection to Mongoose
-    mongoose.disconnect();
-  })
-  .catch(err => {
-    mongoose.disconnect();
-    throw err;
-  });
+// User.deleteMany()
+//   .then(() => User.create(users))
+//   .then(usersCreated => {
+//     console.log(`${usersCreated.length} users created with the following id:`);
+//     console.log(usersCreated.map(u => u._id));
+//   })
+//   .then(() => {
+//     // Close properly the connection to Mongoose
+//     mongoose.disconnect();
+//   })
+//   .catch(err => {
+//     mongoose.disconnect();
+//     throw err;
+//   });

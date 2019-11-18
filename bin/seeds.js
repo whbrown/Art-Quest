@@ -20,29 +20,6 @@ function download(url, filepath) {
   });
 }
 
-console.log(fs.pwd);
-// download(
-//   'https://media.githubusercontent.com/media/metmuseum/openaccess/master/MetObjects.csv',
-//   'full-met-collection.csv'
-// );
-
-// function download(url, filepath) {
-//   const fileStream = fs.createWriteStream(filepath);
-//   const deferred = Q.defer();
-
-//   fileStream
-//     .on('open', () => {
-//       https.get(url, res => {
-//         res.on('error', err => deferred.reject(err));
-//         res.pipe(fileStream);
-//       });
-//     })
-//     .on('error', err => deferred.reject(err))
-//     .on('finish', () => deferred.resolve(filepath));
-
-//   return deferred.promise;
-// }
-
 // mongoose
 //   .connect('mongodb://localhost/art-quest', { useNewUrlParser: true })
 //   .then(x => {

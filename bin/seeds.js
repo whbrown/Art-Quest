@@ -10,15 +10,12 @@ const bcrypt = require('bcrypt');
 const fs = require('fs');
 const https = require('https');
 const request = require('request');
-<<<<<<< HEAD
-
-=======
->>>>>>> f968012d8bd83df1bd33688a555ad95c2e84054f
 const User = require('../models/User');
 const Object = require('../models/Object');
 
 const bcryptSalt = 10;
 
+/*
 function download(url, filepath) {
   const file = fs.createWriteStream(filepath);
   const request = https.get(url, response => {
@@ -47,18 +44,30 @@ function filterCollectionJSON(collection, displayedObjs) {
     )
   );
   console.log('done');
-}*/
+} */
 
 // filterCollectionJSON(fullMetCollection, onDisplayIDs);
+
+// const onDisplayIds = JSON.parse(
+//   JSON.stringify(require('../met_collection_DB/onDisplayObjectIDs.json'))
+// );
 
 mongoose
   .connect('mongodb://localhost/art-quest', { useNewUrlParser: true })
   .then(x => {
-    return Object.insertMany(fullMetCollection);
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
+    Object.distinct('classification').then(res => console.log(res));
+    // return onDisplayIds.forEach(onDisplayId => {
+    //   const idString = onDisplayId.toString();
+    //   Object.findOneAndUpdate({ objectId: idString }, { onDisplay: true })
+    //     .then(res => console.log(res))
+    //     .catch(err => console.log(err));
+    // });
   })
   .then(() => {
     console.log('Finished seeding collection. Closing mongoose connection...');
-    mongoose.connection.close();
   })
   .catch(err => {
     console.error('Error connecting to mongo', err);

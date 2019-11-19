@@ -6,12 +6,11 @@ const http = require('http');
 const csvFilePath = './met_collection_DB/full-met-collection.csv';
 const jsonFilePath = `./met_collection_DB/full-met-collection.json`;
 
-/*
-http
-.createServer((req, res) => {
-  // This opens up the writeable stream to `output`
-  const readStream = fs.createReadStream(csvFilePath);
-  const writeStream = fs.createWriteStream(jsonFilePath);
+const dbConversionServer = http
+  .createServer((req, res) => {
+    // This opens up the writeable stream to `output`
+    const readStream = fs.createReadStream(csvFilePath);
+    const writeStream = fs.createWriteStream(jsonFilePath);
 
     writeStream.on('pipe', () => {
       console.log('Began piping to writer.');
@@ -23,12 +22,12 @@ http
       fs.unlink(jsonFilePath);
     });
     writeStream.on('finish', () => {
-      console.log(`Finished converting csv to json at ${jsonFilePath}`);
+      res.end(`Finished converting csv to json at ${jsonFilePath}`);
     });
   })
   .listen(8080);
-*/
 
+/*
 http
   .createServer((req, res) => {
     // This opens up the writeable stream to `output`
@@ -50,3 +49,4 @@ http
     });
   })
   .listen(8080);
+*/

@@ -16,6 +16,7 @@ const Object = require('../models/Object');
 
 const bcryptSalt = 10;
 
+/*
 function download(url, filepath) {
   const file = fs.createWriteStream(filepath);
   const request = https.get(url, response => {
@@ -46,6 +47,10 @@ function filterCollectionJSON(collection, displayedObjs) {
   console.log('done');
 }
 // filterCollectionJSON(fullMetCollection, onDisplayIDs);
+*/
+const onDisplayIds = JSON.parse(
+  JSON.stringify(require('../met_collection_DB/onDisplayObjectIDs.json'))
+);
 
 mongoose
   .connect('mongodb://localhost/art-quest', { useNewUrlParser: true })
@@ -53,11 +58,15 @@ mongoose
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
     );
-    return Object.insertMany(fullMetCollection);
+    return onDisplayIds.forEach(onDisplayId => {
+      const idString = onDisplayId.toString();
+      Object.findOneAndUpdate({ objectId: idString }, { onDisplay: true })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    });
   })
   .then(() => {
     console.log('Finished seeding collection. Closing mongoose connection...');
-    mongoose.connection.close();
   })
   .catch(err => {
     console.error('Error connecting to mongo', err);

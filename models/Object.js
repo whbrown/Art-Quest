@@ -11,7 +11,7 @@ const objectSchema = new Schema({
   },
   isHighlight: String,
   isPublicDomain: String,
-  objectID: {
+  objectId: {
     type: String,
     required: true,
   },

@@ -58,7 +58,7 @@ mongoose
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
     );
-    Object.distinct('classification').then(res => console.log(res));
+    Object.distinct('region').then(res => console.log(res));
     // return onDisplayIds.forEach(onDisplayId => {
     //   const idString = onDisplayId.toString();
     //   Object.findOneAndUpdate({ objectId: idString }, { onDisplay: true })

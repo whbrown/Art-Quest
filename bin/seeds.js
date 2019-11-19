@@ -58,12 +58,13 @@ mongoose
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
     );
-    return onDisplayIds.forEach(onDisplayId => {
-      const idString = onDisplayId.toString();
-      Object.findOneAndUpdate({ objectId: idString }, { onDisplay: true })
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
-    });
+    Object.distinct('classification').then(res => console.log(res));
+    // return onDisplayIds.forEach(onDisplayId => {
+    //   const idString = onDisplayId.toString();
+    //   Object.findOneAndUpdate({ objectId: idString }, { onDisplay: true })
+    //     .then(res => console.log(res))
+    //     .catch(err => console.log(err));
+    // });
   })
   .then(() => {
     console.log('Finished seeding collection. Closing mongoose connection...');

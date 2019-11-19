@@ -25,7 +25,7 @@ mongoose
     console.error('Error connecting to mongo', err);
   });
 
-const appName = require('./package.json.js').name;
+const appName = require('./package.json').name;
 const debug = require('debug')(
   `${appName}:${path.basename(__filename).split('.')[0]}`
 );
@@ -68,7 +68,7 @@ app.locals.title = 'Art Quest';
 // Enable authentication using session + passport
 app.use(
   session({
-    secret: AUTH_SECRET,
+    secret: process.env.AUTH_SECRET,
     resave: true,
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),

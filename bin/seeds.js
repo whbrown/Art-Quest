@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
+
 const bcryptSalt = 10;
 
 mongoose
@@ -17,6 +18,7 @@ mongoose
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
     );
+
   })
   .catch(err => {
     console.error('Error connecting to mongo', err);

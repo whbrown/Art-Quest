@@ -138,7 +138,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/assess', (req, res, next) => {
-  res.render('assess', {testArray});
+  res.render('assess', { testArray });
   console.log(testArray);
 });
 
@@ -169,19 +169,14 @@ router.get('/assess/:medium', (req, res, next) => {
   const selectedMedia = media[req.params.medium];
   Promise.all(getSampleObjects(selectedMedia))
     .then(objects => {
-      res.render('assess', { objects });
+      res.render('assess', { objects, selectedMedium });
     })
     .catch(err => console.log(err));
 });
 
 router.post('/assess', (req, res, next) => {
-<<<<<<< HEAD
-  console.log("route entered!");
-  console.log(JSON.parse(JSON.stringify(req.body)));
-=======
   console.log('route entered!');
-  console.log(req.body);
->>>>>>> 68db7dda34187600710c78f7fb8308d321284814
+  console.log(JSON.parse(JSON.stringify(req.body)));
 });
 
 module.exports = router;

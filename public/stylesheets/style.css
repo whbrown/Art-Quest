@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Crimson+Text&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 html {
-  font-size: 16px;
+  font-size: 10px;
   font-family: "Open Sans"; }
 
 * {
@@ -10,12 +10,13 @@ html {
   box-sizing: border-box; }
 
 body {
+  font-size: 1.6rem;
   padding: 0;
   font-family: "Open Sans"; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Crimson Text";
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-align: center; }
 
 a {
@@ -28,7 +29,7 @@ nav {
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid black;
-  height: 60px; }
+  height: 6rem; }
 
 nav a {
   text-decoration: none;
@@ -63,7 +64,8 @@ main {
   position: absolute;
   opacity: 0;
   width: 0;
-  height: 0; }
+  height: 0;
+  display: none; }
 
 /* IMAGE STYLES */
 [type=checkbox] + img {
@@ -71,9 +73,7 @@ main {
 
 /* CHECKED STYLES */
 [type=checkbox]:checked + img {
-  -webkit-box-shadow: 0px 1px 6px 5px #1e211e;
-  -moz-box-shadow: 0px 1px 6px 5px #1e211e;
-  box-shadow: 0px 1px 6px 5px #1e211e; }
+  background: #03AD53; }
 
 .assessment-form {
   display: flex;
@@ -93,6 +93,9 @@ main {
 }
 */
 .item-img {
-  width: 80vw; }
+  width: 80vw;
+  border-radius: 1%;
+  padding: 1em;
+  transition-duration: 200ms; }
 
 /*# sourceMappingURL=style.css.map */

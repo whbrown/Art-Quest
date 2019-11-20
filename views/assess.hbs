@@ -3,7 +3,7 @@
 <form action="/assess" method="post" class="assessment-form">
   {{#each objects}}
   <label class="assessment-element">
-    <input type="checkbox" name="{{this.objectID}}" value="{objectBeginDate: {{#if this.objectBeginDate}}{{this.objectBeginDate}}{{else}}''{{/if}},  department:{{#if this.department}}{{this.department}}{{else}}''{{/if}}, culture:{{#if this.culture}}{{this.culture}}{{else}}''{{/if}}, medium:{{../selectedMedium}} }">
+    <input type="checkbox" name="{{this.objectID}}" value="[{{#if this.objectBeginDate}}'{{this.objectBeginDate}}'{{else}}''{{/if}}, {{#if this.department}}'{{this.department}}'{{else}}''{{/if}}, {{#if this.culture}}'{{this.culture}}'{{else}}''{{/if}}, '{{../selectedMedium}}']">
     <img src="{{this.primaryImageSmall}}" class="item-img">
   </label>
   {{/each}}
@@ -12,3 +12,6 @@
   </button>
 </form>
 
+<!--
+  <input type="checkbox" name="{{this.objectID}}" value="{objectBeginDate: {{#if this.objectBeginDate}}{{this.objectBeginDate}}{{else}}''{{/if}},  department:{{#if this.department}}{{this.department}}{{else}}''{{/if}}, culture:{{#if this.culture}}{{this.culture}}{{else}}''{{/if}}, medium:{{../selectedMedium}} }">
+-->

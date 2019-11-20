@@ -59,20 +59,6 @@ mongoose
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
     );
-<<<<<<< HEAD
-
-=======
-    Object.distinct('region').then(res => console.log(res));
-    // return onDisplayIds.forEach(onDisplayId => {
-    //   const idString = onDisplayId.toString();
-    //   Object.findOneAndUpdate({ objectId: idString }, { onDisplay: true })
-    //     .then(res => console.log(res))
-    //     .catch(err => console.log(err));
-    // });
-  })
-  .then(() => {
-    console.log('Finished seeding collection. Closing mongoose connection...');
->>>>>>> 77a8a7e9e74c5e3ff3d209612523479e7792a9e5
   })
   .catch(err => {
     console.error('Error connecting to mongo', err);

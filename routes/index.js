@@ -65,7 +65,6 @@ router.post('/assess', (req, res, next) => {
     Photographs: '19',
     'Modern Art': '21',
   };
-  console.log(Object.keys(req.body));
   // const parsedObj = JSON.parse(approvedObjs.replace(/'(.+)':/g, '"$1":'));
   // const approvedObjIds = Object.keys(parsedObj);
   const approvedObjIds = Object.keys(req.body);
@@ -75,16 +74,20 @@ router.post('/assess', (req, res, next) => {
   const [year, department, culture, medium] = JSON.parse(
     req.body[modelObjId].replace(/'/g, '"')
   );
-  Promise.resolve(
-    selectQuest({
-      objectId: approvedObjIds[randomIndex],
-      date: year,
-      departmentId: departments[department],
-      q: culture,
-      medium,
-    })
-  )
-    .then(obj => res.send(obj))
+  selectQuest({
+    objectId: approvedObjIds[randomIndex],
+    date: year,
+    departmentId: departments[department],
+    q: culture,
+    medium,
+  })
+    .then(obj => res.send(obj.data))
+    // .then(questObjId =>
+    //   axios.get(
+    //     `https://collectionapi.metmuseum.org/public/collection/v1/objects/${questObjId}`
+    //   )
+    // )
+    // .then(obj => res.send(obj))
     .catch(err => console.log(err));
 });
 

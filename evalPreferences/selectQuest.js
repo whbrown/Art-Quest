@@ -3,8 +3,8 @@ const axios = require('axios').default;
 function selectQuest(modelObj) {
   // modelObj keys = [objectId, date, departmentId, q, medium]
   let period = null;
-  const { date, departmentId, q, medium } = modelObj;
-
+  const { date, q, medium } = modelObj;
+  const departmentId = modelObj.departmentId || '*';
   const periods = [
     `dateBegin=-8000&dateEnd=-1000`,
     `dateBegin=-1000&dateEnd=500`,
@@ -30,18 +30,26 @@ function selectQuest(modelObj) {
   } else {
     period = periods[6];
   }
+  const apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&isHighlight=true&medium=${medium}&hasImages=true&departmentId=${departmentId}&${period}&q=${q}`;
+  console.log(apiQuery);
 
   return axios
-    .get(
-      `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&isHighlight=true&medium=${medium}&hasImages=true&departmentId=${departmentId}&${period}&q=${q}`
-    )
+    .get(apiQuery)
     .then(response => {
       const { objectIDs } = response.data;
+      console.log(objectIDs);
       const questObjId = objectIDs.find(id => id !== modelObj.objectId);
-      return axios.get(
-        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${questObjId}`
-      );
-    });
+      console.log(questObjId);
+      return questObjId;
+    })
+    .then(questObjId =>
+      axios
+        .get(
+          `https://collectionapi.metmuseum.org/public/collection/v1/objects/${questObjId}`
+        )
+        .then(object => object)
+        .catch(err => console.log(err))
+    );
 }
 
 module.exports = selectQuest;

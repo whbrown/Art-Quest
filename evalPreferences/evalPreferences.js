@@ -31,12 +31,8 @@ function getSampleObjects(medium) {
       })
       .catch(err => console.error(err));
   });
-  Promise.all(objects)
-    .then(res => res)
-    .catch(err => console.log(err));
+  return objects;
 }
-
-const media = ['Paintings', 'Sculpture', 'Furniture', 'Musical+instruments'];
 
 module.exports = getSampleObjects;
 

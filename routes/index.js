@@ -8,14 +8,14 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-<<<<<<< HEAD
 router.get('/assessment', (req, res, next) => {
   res.render('assessment');
 });
 
 router.get('/details', (req, res, next) => {
   res.render('details');
-=======
+});
+
 router.get('/assess/:medium', (req, res, next) => {
   const media = {
     painting: 'Paintings',
@@ -23,6 +23,7 @@ router.get('/assess/:medium', (req, res, next) => {
     furniture: 'Furniture',
     music: 'Musical+instruments',
   };
+
   const selectedMedia = media[req.params.medium];
   Promise.all(getSampleObjects(selectedMedia))
     .then(objects => {
@@ -33,7 +34,9 @@ router.get('/assess/:medium', (req, res, next) => {
 
 router.post('/assess', (req, res, next) => {
   req.body;
->>>>>>> 77a8a7e9e74c5e3ff3d209612523479e7792a9e5
+  // receive array of approved paintings from page 2
+  //
+  // render page 3 with
 });
 
 module.exports = router;

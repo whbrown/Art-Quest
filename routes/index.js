@@ -144,6 +144,14 @@ router.get('/details', (req, res, next) => {
   res.render('details');
 });
 
+router.get('/test', (req, res, next) => {
+  Promise.all(getSampleObjects('Paintings'))
+    .then(objects => {
+      res.send(objects);
+    })
+    .catch(err => console.log(err));
+});
+
 router.get('/assess/:medium', (req, res, next) => {
   const media = {
     painting: 'Paintings',
@@ -151,6 +159,7 @@ router.get('/assess/:medium', (req, res, next) => {
     furniture: 'Furniture',
     music: 'Musical+instruments',
   };
+
   const selectedMedia = media[req.params.medium];
   Promise.all(getSampleObjects(selectedMedia))
     .then(objects => {

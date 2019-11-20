@@ -30,11 +30,34 @@ function selectQuest(modelObj) {
   } else {
     period = periods[6];
   }
-  const apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&isHighlight=true&medium=${medium}&hasImages=true&departmentId=${departmentId}&${period}&q=${q}`;
+  let apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&isHighlight=true&medium=${medium}&hasImages=true&departmentId=${departmentId}&${period}&q=${q}`;
   console.log(apiQuery);
 
   return axios
     .get(apiQuery)
+    .then(queryResult => {
+      if (!queryResult) {
+        // if no matches, remove highlight requirement
+        apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&medium=${medium}&hasImages=true&departmentId=${departmentId}&${period}&q=${q}`;
+        return axios.get(apiQuery);
+      }
+      return queryResult;
+    })
+    .then(queryResult => {
+      console.log(queryResult);
+      if (!queryResult) {
+        // if still no matches, remove culture requirement
+        apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&medium=${medium}&hasImages=true&departmentId=${departmentId}&${period}&q=*`;
+        return axios.get(apiQuery);
+      }
+      return queryResult;
+    })
+    .then(queryResult => {
+      if (!queryResult) {
+        // return query for a really weird object (by ID)
+      }
+      return queryResult;
+    })
     .then(response => {
       const { objectIDs } = response.data;
       console.log(objectIDs);
@@ -43,13 +66,12 @@ function selectQuest(modelObj) {
       return questObjId;
     })
     .then(questObjId =>
-      axios
-        .get(
-          `https://collectionapi.metmuseum.org/public/collection/v1/objects/${questObjId}`
-        )
-        .then(object => object)
-        .catch(err => console.log(err))
-    );
+      axios.get(
+        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${questObjId}`
+      )
+    )
+    .then(object => object)
+    .catch(err => console.error(err));
 }
 
 module.exports = selectQuest;

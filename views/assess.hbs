@@ -1,9 +1,9 @@
 <p>Please select one piece of art that you like by clicking on it and we will guide you to a similar artwork.</p>
 
-<form method="post" class="assessment-form">
-  {{#each testArray}}
+<form action="/assess" method="post" class="assessment-form">
+  {{#each objects}}
   <label class="assessment-element">
-    <input type="checkbox" name="{{this.objectID}}" value="{objectBeginDate: {{#if this.objectBeginDate}}{{this.objectBeginDate}}{{else}}''{{/if}},  department:{{#if this.department}}{{this.department}}{{else}}''{{/if}}, culture:{{#if this.culture}}{{this.culture}}{{else}}''{{/if}}, medium:{{selectedMedium}} }">
+    <input type="checkbox" name="{{this.objectID}}" value="{objectBeginDate: {{#if this.objectBeginDate}}{{this.objectBeginDate}}{{else}}''{{/if}},  department:{{#if this.department}}{{this.department}}{{else}}''{{/if}}, culture:{{#if this.culture}}{{this.culture}}{{else}}''{{/if}}, medium:{{../selectedMedium}} }">
     <img src="{{this.primaryImageSmall}}" class="item-img">
   </label>
   {{/each}}

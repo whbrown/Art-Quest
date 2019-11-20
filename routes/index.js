@@ -32,10 +32,10 @@ router.get('/assess/:medium', (req, res, next) => {
     music: 'Musical+instruments',
   };
 
-  const selectedMedia = media[req.params.medium];
-  Promise.all(getSampleObjects(selectedMedia))
+  const selectedMedium = media[req.params.medium];
+  Promise.all(getSampleObjects(selectedMedium))
     .then(objects => {
-      res.render('assess', { objects });
+      res.render('assess', { objects, selectedMedium });
     })
     .catch(err => console.log(err));
 });

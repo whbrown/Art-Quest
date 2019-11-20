@@ -137,7 +137,8 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/assess', (req, res, next) => {
-  res.render('assess');
+  res.render('assess', {testArray});
+  console.log(testArray);
 });
 
 router.get('/details', (req, res, next) => {
@@ -170,7 +171,7 @@ router.get('/assess/:medium', (req, res, next) => {
 
 router.post('/assess', (req, res, next) => {
   console.log("route entered!");
-  console.log(req.body);
+  console.log(JSON.parse(JSON.stringify(req.body)));
 });
 
 module.exports = router;

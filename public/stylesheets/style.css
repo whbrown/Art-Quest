@@ -73,7 +73,9 @@ main {
 
 /* CHECKED STYLES */
 [type=checkbox]:checked + img {
-  background: #03AD53; }
+  -webkit-box-shadow: 0px 1px 6px 5px #1e211e;
+  -moz-box-shadow: 0px 1px 6px 5px #1e211e;
+  box-shadow: 0px 1px 6px 5px #1e211e; }
 
 .assessment-form {
   display: flex;

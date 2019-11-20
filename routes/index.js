@@ -14,6 +14,7 @@ router.get('/assess', (req, res, next) => {
 
 router.get('/details', (req, res, next) => {
   res.render('details');
+});
 
 router.get('/assess/:medium', (req, res, next) => {
   const media = {

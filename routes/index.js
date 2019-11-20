@@ -8,14 +8,13 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-<<<<<<< HEAD
-router.get('/assessment', (req, res, next) => {
-  res.render('assessment');
+router.get('/assess', (req, res, next) => {
+  res.render('assess');
 });
 
 router.get('/details', (req, res, next) => {
   res.render('details');
-=======
+
 router.get('/assess/:medium', (req, res, next) => {
   const media = {
     painting: 'Paintings',
@@ -33,7 +32,6 @@ router.get('/assess/:medium', (req, res, next) => {
 
 router.post('/assess', (req, res, next) => {
   req.body;
->>>>>>> 77a8a7e9e74c5e3ff3d209612523479e7792a9e5
 });
 
 module.exports = router;

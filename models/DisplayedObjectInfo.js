@@ -7,11 +7,12 @@ const { Schema } = mongoose;
 const displayedObjectInfoSchema = new Schema({
   objectId: Number,
   location: String,
-  description: String,
+  description: String
 });
 
-const displayedObjectInfo = mongoose.model(
+const DisplayedObjectInfo = mongoose.model(
   'Displayed-Object-Information',
   displayedObjectInfoSchema
 );
-module.exports = Object;
+
+module.exports = DisplayedObjectInfo;

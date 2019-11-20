@@ -12,7 +12,7 @@ function getSampleObjects(medium) {
   ];
 
   const objects = periods.map(period => {
-    const apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&&isHighlight=true&medium=${medium}&hasImages=true&${period}&q=*`;
+    const apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?medium=${medium}&hasImages=true&${period}&q=*`;
     return axios
       .get(apiQuery)
       .then(response => {

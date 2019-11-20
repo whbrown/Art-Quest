@@ -17,56 +17,25 @@ const Object = require('../models/Object');
 
 const bcryptSalt = 10;
 
-/*
-function download(url, filepath) {
-  const file = fs.createWriteStream(filepath);
-  const request = https.get(url, response => {
-    response.pipe(file);
-  });
-}
+const DisplayedObjectInfo = require("../models/DisplayedObjectInfo");
 
-const fullMetCollection = JSON.parse(
-  JSON.stringify(require('../met_collection_DB/full-met-collection.json'))
-);
-/*
-const onDisplayIDs = JSON.parse(
-  JSON.stringify(require('../met_collection_DB/onDisplayObjectIDs.json'))
-);
+mongoose.connect('mongodb://localhost/art-quest');
+//get information from files
 
-function filterCollectionJSON(collection, displayedObjs) {
-  console.log('Beginning filter.');
+const scrapingdata = "scrapedata/complete.txt";
 
-  const writeStream = fs.createWriteStream('onDisplayMetCollection.txt', {
-    flags: 'a',
-  });
-  writeStream.on('error', err => console.log(err));
-  writeStream.write(
-    JSON.stringify(
-      collection.filter(object => displayedObjs.includes(object['Object ID']))
-    )
-  );
-  console.log('done');
-}
-// filterCollectionJSON(fullMetCollection, onDisplayIDs);
-*/
-// const onDisplayIds = JSON.parse(
-//   JSON.stringify(require('../met_collection_DB/onDisplayObjectIDs.json'))
-// );
-
-mongoose
-  .connect('mongodb://localhost/art-quest', { useNewUrlParser: true })
-  .then(x => {
-    console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
-    );
-  })
-  .catch(err => {
-    console.error('Error connecting to mongo', err);
-  });
-
-let users = [
-  // TODO
-];
+fs.readFile(scrapingdata, 'utf8', (err, data) => {
+  if (err) throw err;
+  let artworks = JSON.parse(data);
+  DisplayedObjectInfo.insertMany(artworks)
+    .then(documents => {
+      console.log("success");
+      mongoose.connection.close();
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
 
 // User.deleteMany()
 //   .then(() => User.create(users))

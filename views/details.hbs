@@ -1,4 +1,14 @@
-<h1>Title</h1>
-<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/436524/800285/main-image" alt="" class="item-img">
-<p>Artist</p>
-<p>Van Gogh painted four still lifes of sunflowers in Paris in late summer 1887. There is an oil sketch for this picture (Van Gogh Museum, Amsterdam) as well as another painting of two sunflowers also signed and dated 1887 (Kunstmuseum Bern), and a larger canvas showing four sunflower heads (Kröller-Müller Museum, Otterlo). Paul Gauguin acquired the two smaller works, and until the mid-1890s, when he sold his most prized possessions to finance his South Seas voyage, they held pride of place above the bed in his Paris apartment.</p>
+{{#with questItem}}
+<h1>'<span class="obj-title">{{title}}</span>'</h1>
+<img src="{{primaryImage}}" alt="{{title}}" class="item-img">
+<h2>{{artistDisplayName}}</h2>
+<h3 class="artist-liferange"><span class="artist-begin-date">{{artistBeginDate}}</span>-<span
+    class="artist-end-date">{{artistEndDate}}</span></h3>
+<h4><span class="obj-medium">{{medium}}</span> <span class="obj-dimensions">{{dimensions}}</span></h4>
+<p class="about-the-artist">About the {{artistRole}}</p>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime magnam at aliquid, vitae inventore voluptatibus
+  placeat laboriosam. Veniam omnis dicta at et. Ducimus expedita hic natus laborum recusandae voluptatibus et
+  voluptates, sit voluptas eius dolore adipisci similique, voluptate a labore nisi eum dolorum assumenda odio quidem,
+  quasi soluta minima repellendus.</p>
+<h4>{{creditLine}}</h4>
+{{/with}}

@@ -81,13 +81,11 @@ router.post('/assess', (req, res, next) => {
     q: culture,
     medium,
   })
-    .then(obj => res.send(obj.data))
-    // .then(questObjId =>
-    //   axios.get(
-    //     `https://collectionapi.metmuseum.org/public/collection/v1/objects/${questObjId}`
-    //   )
-    // )
-    // .then(obj => res.send(obj))
+    .then(obj => {
+      const questItem = obj.data;
+      console.log(obj.data);
+      res.render('details', { questItem });
+    })
     .catch(err => console.log(err));
 });
 

@@ -1,6 +1,6 @@
 {{#with questItem}}
 <h1><span class="obj-title">{{title}}</span></h1>
-<img src="{{primaryImage}}" alt="{{title}}" class="item-img">
+<img src="{{primaryImageSmall}}" alt="{{title}}" class="item-img">
 <h2>{{artistDisplayName}}</h2>
 <h3 class="artist-liferange"><span class="artist-begin-date">{{artistBeginDate}}</span>-<span
     class="artist-end-date">{{artistEndDate}}</span></h3>
@@ -14,7 +14,8 @@
 
 <style>
   main {
-    background:linear-gradient(0deg,rgba(253, 254, 254, 0.8),rgba(247, 249, 249,0.9)),url({{primaryImage}});
+    background:linear-gradient(0deg, rgba(253, 254, 254, 0.8), rgba(247, 249, 249, 0.9)),
+    url({{primaryImage}});
     background-size: cover;
     background-position: center;
     background

@@ -2,7 +2,7 @@
 node_modules
 
 #scraping data
-scrapedata
+
 
 # Debug log from npm
 npm-debug.log

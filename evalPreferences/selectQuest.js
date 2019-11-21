@@ -31,29 +31,30 @@ function selectQuest(modelObj) {
     period = periods[6];
   }
   let apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&isHighlight=true&medium=${medium}&hasImages=true&departmentId=${departmentId}&${period}&q=${q}`;
-  console.log(apiQuery);
-
+  console.log('sending query: ', apiQuery);
   return axios
     .get(apiQuery)
     .then(queryResult => {
-      if (!queryResult) {
+      if (!queryResult.data.objectIDs) {
         // if no matches, remove highlight requirement
         apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&medium=${medium}&hasImages=true&departmentId=${departmentId}&${period}&q=${q}`;
+        console.log('sending query: ', apiQuery);
         return axios.get(apiQuery);
       }
       return queryResult;
     })
     .then(queryResult => {
-      console.log(queryResult);
-      if (!queryResult) {
+      console.log(queryResult.data.objectIDs);
+      if (!queryResult.data.objectIDs) {
         // if still no matches, remove culture requirement
         apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&medium=${medium}&hasImages=true&departmentId=${departmentId}&${period}&q=*`;
+        console.log('sending query: ', apiQuery);
         return axios.get(apiQuery);
       }
       return queryResult;
     })
     .then(queryResult => {
-      if (!queryResult) {
+      if (!queryResult.data.objectIDs) {
         // return query for a really weird object (by ID)
       }
       return queryResult;

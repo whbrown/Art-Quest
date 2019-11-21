@@ -1,3 +1,5 @@
+'use strict';
+
 function gotoMap(gallery) {
   const genRange = (start, end) => {
     let arr = [];
@@ -28,19 +30,28 @@ function gotoMap(gallery) {
     .concat(genRange(170, 172))
     .concat(genRange(773, 774));
   const levelGGalleries = genRange(980, 981).concat(genRange(963, 965));
-  if (cloisters1.includes(gallery)) return `/images/met-map/MetCloisters1.png`;
-  if (cloistersG.includes(gallery)) return `/images/met-map/MetCloistersG.png`;
+  if (cloisters1.includes(gallery))
+    return [`/images/met-map/MetCloisters1.png`, `1st Floor`];
+  if (cloistersG.includes(gallery))
+    return [`/images/met-map/MetCloistersG.png`, `Ground Floor`];
   if (level5Galleries.includes(gallery))
-    return `/images/met-map/Met5thAve5.png`;
+    return [`/images/met-map/Met5thAve5.png`, `5th Floor`];
   if (level3Galleries.includes(gallery))
-    return `/images/met-map/Met5thAve3.png`;
+    return [`/images/met-map/Met5thAve3.png`, `3rd Floor`];
   if (level2Galleries.includes(gallery))
-    return `/images/met-map/Met5thAve2.png`;
+    return [`/images/met-map/Met5thAve2.png`, `2nd Floor`];
   if (level1MGalleries.includes(gallery))
-    return `/images/met-map/Met5thAve1M.png`;
+    return [`/images/met-map/Met5thAve1M.png`, 'Floor 1M'];
   if (levelGGalleries.includes(gallery))
-    return `/images/met-map/Met5thAveG.png`;
-  return `/images/met-map/Met5thAve1.png`;
+    return [`/images/met-map/Met5thAveG.png`, 'Ground Floor'];
+  return [`/images/met-map/Met5thAve1.png`, '1st Floor'];
 }
+const gallery = document
+  .querySelector('.gallery-number')
+  .textContent.match(/\d+/)[0];
 
-module.exports = gotoMap;
+const [mapPath, museumLevel] = gotoMap(gallery);
+
+document.querySelector('.gallery-map').setAttribute('src', mapPath);
+document.querySelector('.museum-level').textContent = museumLevel;
+document.querySelector('.map-level').textContent = museumLevel;

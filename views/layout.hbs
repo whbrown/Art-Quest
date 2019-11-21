@@ -26,7 +26,8 @@
     <div id="popup2" class="overlay light">
       <a class="cancel" href="#"></a>
       <div class="popup">
-        {{#if questItem.[location]}}<h2>Location: <span class="gallery-number">{{questItem.[location]}}</span></h2>
+        {{#if questItem.[location]}}<h2>Location: <span class="gallery-number">{{questItem.[location]}}</span>, <span
+            class="department-name">{{questItem.[department]}} department</span>, <span class="map-level"></span></h2>
         {{/if}}
         <div class="content">
           <img src="/images/met-map/Met5thAve1.png" alt="Metropolitan Museum Map" class="gallery-map">
@@ -37,6 +38,16 @@
   <main>
     {{{body}}}
   </main>
+  {{#if questItem.[location]}}
+  <script src="/javascripts/mapScript.js"></script>
+  {{!-- <script>
+    const gotoMap = require(`/javascripts/map/mapScript.js`);
+    location = document.querySelector('.gallery-number').match(/\d+/)[0];
+    const mapPath = gotoMap(location);
+    const map = document.querySelector('.gallery-map');
+    map.setAttribute('src', mapPath);
+  </script> --}}
+  {{/if}}
   <script src="/javascripts/script.js"></script>
 </body>
 

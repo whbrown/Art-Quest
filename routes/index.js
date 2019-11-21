@@ -49,20 +49,22 @@ router.get('/assess/:medium', (req, res, next) => {
 });
 
 router.post('/assess/:medium', (req, res, next) => {
-  console.log(req.body);
+  const media = {
+    Paintings: `painting`,
+    Sculpture: `sculpture`,
+    Furniture: `furniture`,
+    'Musical+instruments': `music`,
+  };
+  if (!req.body) {
+    return res.redirect(`/assess/${media[req.body.params]}`);
+  }
   function isEmpty(obj) {
-    for (let key in obj) {
-      if (obj.hasOwnProperty(key)) return false;
+    if (JSON.stringify(obj) === JSON.stringify({})) {
+      return true;
     }
-    return true;
+    return false;
   }
   if (isEmpty(req.body)) {
-    const media = {
-      Paintings: `painting`,
-      Sculpture: `sculpture`,
-      Furniture: `furniture`,
-      'Musical+instruments': `music`,
-    };
     return res.redirect(`/assess/${media[req.body.params]}`);
   }
   const departments = {

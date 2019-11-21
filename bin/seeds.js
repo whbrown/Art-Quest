@@ -14,27 +14,26 @@ const request = require('request');
 const User = require('../models/User');
 const Object = require('../models/Object');
 
-
 const bcryptSalt = 10;
 
-const DisplayedObjectInfo = require("../models/DisplayedObjectInfo");
+const DisplayedObjectInfo = require('../models/DisplayedObjectInfo');
 
-mongoose.connect('mongodb://localhost/art-quest');
-//get information from files
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/art-quest');
+// get information from files
 
-const scrapingdata = "scrapedata/complete.txt";
+const scrapingdata = 'scrapedata/complete.txt';
 
 fs.readFile(scrapingdata, 'utf8', (err, data) => {
   if (err) throw err;
   let artworks = JSON.parse(data);
   DisplayedObjectInfo.insertMany(artworks)
     .then(documents => {
-      console.log("success");
+      console.log('success');
       mongoose.connection.close();
     })
     .catch(err => {
       console.log(err);
-    })
+    });
 });
 
 // User.deleteMany()

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,36 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
+
 <body>
-<nav>
-  <a href="#">
-    <div class="logo-container">
-      <div class="art-quest-container">
-        <p>Art</p>
-        <p>Quest</p>
+  <nav>
+    <a href="#">
+      <div class="logo-container">
+        <div class="art-quest-container">
+          <p>Art</p>
+          <p>Quest</p>
+        </div>
+        <img id="met-logo" src="/images/met-logo.png" alt="met-logo">
       </div>
-      <img id="met-logo" src="/images/met-logo.png" alt="met-logo">
+    </a>
+    <div id="wrapper">
+      <a class="button" href="#popup2"><img src="/images/met-map/mapicon.png" alt="Click for map" class="map-icon"></a>
     </div>
-  </a>
-</nav>
-<main>
-{{{body}}}
-</main>
-<script src="/javascripts/script.js"></script>
+    <div id="popup2" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div class="popup">
+        {{#if questItem.[location]}}<h2>Location: <span class="gallery-number">{{questItem.[location]}}</span></h2>
+        {{/if}}
+        <div class="content">
+          <img src="/images/met-map/Met5thAve1.png" alt="Metropolitan Museum Map" class="gallery-map">
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main>
+    {{{body}}}
+  </main>
+  <script src="/javascripts/script.js"></script>
 </body>
+
 </html>

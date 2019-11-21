@@ -57,7 +57,8 @@ function selectQuest(modelObj) {
     })
     .then(queryResult => {
       if (!queryResult.data.objectIDs) {
-        // return query for a really weird object (by ID)
+        apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&hasImages=true&medium=${medium}&q=cat`;
+        return axios.get(apiQuery);
       }
       return queryResult;
     })

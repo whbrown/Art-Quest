@@ -40,8 +40,15 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid black;
-  height: 6rem;
+  border-bottom: 0.2px solid #F5F5F5;
+  -webkit-box-shadow: 0px 6px 16px -16px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 6px 16px -16px rgba(0,0,0,0.75);
+  box-shadow: 0px 6px 16px -16px rgba(0,0,0,0.75);
+  height: 55px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
 }
 
 nav a {
@@ -51,23 +58,32 @@ nav a {
   font-weight: bold;
 }
 
+.nav-elements {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%
+}
+
 .logo-container {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 35vw;
   padding: 4px;
 }
 
 .art-quest-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  border-right: 1px solid black;
   width: 40%;
   height: 40px;
   padding-right: 2vw;
+}
+
+.art-quest-container p {
+  font-size: 2.5rem;
 }
 
 #met-logo  {
@@ -79,20 +95,31 @@ nav a {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 50vh;
+  height: 250px;
 }
 
 #welcome-heading {
-  margin: 5vh 0 3vh 0;
+  padding: 10px 5px 8px 5px;
+  font-size: 2.2rem;
+}
+
+.welcome-text {
+  padding: 5px 7px 5px 7px;
+  font-size: 1.3rem;
+}
+
+.welcome-container {
+  background-color: rgba(255,255,255,0.85);
+  padding: 0 5px;
 }
 
 .call-to-action {
   border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
-    -webkit-box-shadow: 4px 10px 18px -6px rgba(0,0,0,0.75);
-    -moz-box-shadow: 4px 10px 18px -6px rgba(0,0,0,0.75);
-    box-shadow: 4px 10px 18px -6px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 4px 10px 18px -12px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 10px 18px -12px rgba(0,0,0,0.75);
+box-shadow: 4px 10px 18px -12px rgba(0,0,0,0.75);
   border: 0px solid #000000;
   background-color: #3E7FB3;
   width: 200px;
@@ -107,6 +134,7 @@ nav a {
 
 main {
   padding: 0 6vw;
+  margin-top: 12vh;
 }
 
 /* HIDE RADIO */
@@ -206,12 +234,12 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-	margin: 0 auto;
 }
 
 .map-icon {
   max-width: 100%;
   border-radius: 35%;
+  height: 40px;
 }
 
 .button {

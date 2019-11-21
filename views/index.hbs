@@ -1,9 +1,25 @@
-<h1 id="welcome-heading">Welcome to your Art Quest at the Met!</h1>
-<p>Art Quest helps you to find the artworks that you are interested in.</p>
-<p>Please select what kind of art you want to see: </p>
-<div class="button-container">
-<a class="call-to-action" href="/assess/painting">Paintings</a>
-<a class="call-to-action" href="/assess/sculpture">Sculptures</a>
-<a class="call-to-action" href="/assess/furniture">Furniture</a>
-<a class="call-to-action" href="/assess/music">Musical instruments</a>
+<div class="welcome-container">
+  <h1 id="welcome-heading">Welcome to your Art Quest at the Met!</h1>
+  <p class="welcome-text">Art Quest helps you to find the artworks that you are interested in.</p>
+  <hr>
+  <p class="welcome-text"><strong>Please select what kind of art you want to see:</strong></p>
+  <div class="button-container">
+    <a class="call-to-action" href="/assess/painting">Paintings</a>
+    <a class="call-to-action" href="/assess/sculpture">Sculptures</a>
+    <a class="call-to-action" href="/assess/furniture">Furniture</a>
+    <a class="call-to-action" href="/assess/music">Musical instruments</a>
+  </div>
 </div>
+
+<style>
+  main {
+    background: linear-gradient(0deg, rgba(253, 254, 254, 0.9), rgba(247, 249, 249, 1)),
+    url('/images/welcome.jpeg');
+    background-blend-mode: saturation;
+    background-size: cover;
+    background-position: center;
+    min-height: 88vh;
+    margin-top: 55px;
+    padding-top: 15px;
+  }
+</style>

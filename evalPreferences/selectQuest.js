@@ -67,7 +67,11 @@ function selectQuest(modelObj) {
       console.log(modelObj.objectId);
       console.log(objectIDs);
 
-      //add default behavior for when objectIDs = null (no results)
+      //add default behavior for when objectIDs = null (no results) (show cats)
+      if (!objectIDs) {
+        apiQuery = `https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&hasImages=true&medium=${medium}&q=cat`;
+        return axios.get(apiQuery);
+      } 
 
       //check if assessment id is in results and if so remove it
       console.log("Object IDs  not empty.")
@@ -77,36 +81,35 @@ function selectQuest(modelObj) {
         objectIDs = objectIDs.splice(index, 1);
         console.log("modified objectIDs: ", objectIDs);
       }
-
-      /*
-      //filter ObjectIDs for those that have a description
-      DisplayedObjectInfo.find({$and: [ { "objectId": { $in: objectIDs } }, { "description": { $ne: '' } } ] } )
+      
+      //filter ObjectIDs for those that have a description and process the results until 
+      return DisplayedObjectInfo.find({$and: [ { "objectId": { $in: objectIDs } }, { "description": { $ne: '' } } ] } )
         .then(objArr => {
-          objectIDs = objArr;
-          console.log("objectIds after db filtering: ", objectIDs);
-          return objectIDs;
-        })
-      */
-      console.log("objectIds after db filtering: ", objectIDs);
-
-      return objectIDs[0];
-    })
-    .then(questObjId =>
-      axios.get(
-        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${questObjId}`
-      )
-    )
-    .then(object => {
-      console.log("The recommended image is: ", object.data)
-      const returnObject = object.data;
-      return DisplayedObjectInfo.findOne({ objectId: returnObject.objectID })
+          console.log("splash!");
+          let objectIdsFiltered = objArr;
+          //console.log("objectIds after db filtering: ", objectIdsFiltered);
+          let questObjId = objectIdsFiltered[0].objectId;
+          return questObjId;
+          })
+        .then(questObjId => {
+          console.log("questObjId: ", questObjId)
+          return axios.get(
+            `https://collectionapi.metmuseum.org/public/collection/v1/objects/${questObjId}`
+          )
+        }
+        )
         .then(object => {
-          returnObject.location = object.location;
-          returnObject.description = object.description;
-          return returnObject;
+          console.log("The recommended image is: ", object.data)
+          const returnObject = object.data;
+          return DisplayedObjectInfo.findOne({ objectId: returnObject.objectID })
+            .then(object => {
+              returnObject.location = object.location;
+              returnObject.description = object.description;
+              return returnObject;
+            })
         })
+        .catch(err => console.error(err));
     })
-    .catch(err => console.error(err));
 }
 
 module.exports = selectQuest;

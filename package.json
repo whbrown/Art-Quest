@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node --http-parser=legacy ./bin/www",
     "dev": "DEBUG=art-quest:* nodemon --http-parser=legacy ./bin/www",
     "dev-windows": "nodemon --http-parser=legacy ./bin/www"
   },

@@ -43,7 +43,7 @@ router.get('/assess/:medium', (req, res, next) => {
     .catch(err => console.log(err));
 });
 
-router.post('/assess', (req, res, next) => {
+router.post('/assess/:medium', (req, res, next) => {
   const departments = {
     'American Decorative Arts': '1',
     'Ancient Near Eastern Art': '3',
@@ -82,7 +82,7 @@ router.post('/assess', (req, res, next) => {
     medium,
   })
     .then(questItem => {
-      console.log("The following item was returned:", questItem);
+      console.log('The following item was returned:', questItem);
       res.render('details', { questItem });
     })
     .catch(err => console.log(err));

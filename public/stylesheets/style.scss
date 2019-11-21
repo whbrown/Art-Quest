@@ -29,6 +29,12 @@ a {
   text-decoration: none;
 }
 
+.undisplayed {
+  display: none;
+}
+
+// nav
+
 nav {
   width: 100%;
   display: flex;
@@ -88,7 +94,7 @@ nav a {
     -moz-box-shadow: 4px 10px 18px -6px rgba(0,0,0,0.75);
     box-shadow: 4px 10px 18px -6px rgba(0,0,0,0.75);
   border: 0px solid #000000;
-  background-color: black;
+  background-color: #3E7FB3;
   width: 200px;
   height: 45px;
   display: flex;
@@ -115,17 +121,47 @@ main {
 /* IMAGE STYLES */
   [type=checkbox] + img {
   cursor: pointer;
+  background: rgba(236, 160, 160, 0.288);
 }
 
 /* CHECKED STYLES */
   [type=checkbox]:checked + img {
-    -webkit-box-shadow: 0px 1px 6px 5px rgba(30,33,30,1);
-    -moz-box-shadow: 0px 1px 6px 5px rgba(30,33,30,1);
-    box-shadow: 0px 1px 6px 5px rgba(30,33,30,1);
+    -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.9);
+    -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.9);
+    box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.9);
+    background: #24B355;
+    filter: contrast(120%);
 }
 
+// ===============
+/* ASSESSMENT PAGE */
+// ===============
 
+.assessment-container {
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.assessment-intro {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.125;
+
+  h2 {
+    font-size: 3.8rem;
+  }
+  h3 {
+    font-size: 2.25rem;
+  }
+}
 .assessment-form {
+  margin-bottom: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,6 +170,12 @@ main {
 
 .assessment-element {
   margin: 20px 0;
+  min-width: 300px;
+}
+
+.emphasis {
+  font-weight: 700;
+  color: #901E1B;
 }
 /*
 .assessment-box {
@@ -150,6 +192,12 @@ main {
   padding: 1em;
   transition-duration: 200ms;
 }
+
+.assessment-btn {
+  margin: 1em 0;
+}
+
+
 // =========
 /*   MAP   */
 // =========

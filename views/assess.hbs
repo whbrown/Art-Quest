@@ -1,17 +1,47 @@
-<p>Please select one piece of art that you like by clicking on it and we will guide you to a similar artwork.</p>
+<div class="assessment-intro">
+  <h2>Select any piece(s) of art</h2>
+  <h3>that you like and <span class="emphasis">we will guide
+      you</span> to a similar artwork on display in the museum.</h3>
+</div>
 
-<form action="/assess" method="post" class="assessment-form">
-  {{#each objects}}
-  <label class="assessment-element">
-    <input type="checkbox" name="{{this.objectID}}" value="[{{#if this.objectBeginDate}}'{{this.objectBeginDate}}'{{else}}''{{/if}}, {{#if this.department}}'{{this.department}}'{{else}}''{{/if}}, {{#if this.culture}}'{{this.culture}}'{{else}}'*'{{/if}}, '{{../selectedMedium}}']">
-    <img src="{{this.primaryImageSmall}}" class="item-img">
-  </label>
-  {{/each}}
-  <button type="submit">
-    Get recommendation
-  </button>
+<form action="/assess/{{selectedMedium}}" method="post" class="assessment-form">
+  <div class="assessment-container">
+    {{#each objects}}
+    <label class="assessment-element">
+      <input class="assessment-checkbox" type="checkbox" name="{{this.objectID}}"
+        value="[{{#if this.objectBeginDate}}'{{this.objectBeginDate}}'{{else}}''{{/if}}, {{#if this.department}}'{{this.department}}'{{else}}''{{/if}}, {{#if this.culture}}'{{this.culture}}'{{else}}'*'{{/if}}, '{{../selectedMedium}}']">
+      <img src="{{this.primaryImageSmall}}" class="item-img">
+    </label>
+    {{/each}}
+  </div>
+  <div class="assessment-btns">
+    <button type="submit" class="call-to-action assessment-btn">
+      More images
+    </button>
+  </div>
 </form>
+
 <a href=""></a>
+
+<script>
+  const [...checkBoxes] = document.getElementsByClassName('assessment-checkbox');
+  checkBoxes.forEach((checkbox) => {
+    checkbox.onchange = (e) => {
+      const assessmentBtn = document.querySelector(`.assessment-btn`);
+      if (this.checked) {
+        return assessmentBtn.innerText = 'Get recommendation';
+      }
+      const anyBoxesChecked = checkBoxes.find((checkbox) => checkbox.checked === true);
+      console.log(anyBoxesChecked);
+      if (anyBoxesChecked) {
+        return assessmentBtn.innerText = 'Get recommendation';
+      }
+      else {
+        return assessmentBtn.innerText = 'More images';
+      }
+    }
+  })
+</script>
 
 <!--
   <input type="checkbox" name="{{this.objectID}}" value="{objectBeginDate: {{#if this.objectBeginDate}}{{this.objectBeginDate}}{{else}}''{{/if}},  department:{{#if this.department}}{{this.department}}{{else}}''{{/if}}, culture:{{#if this.culture}}{{this.culture}}{{else}}''{{/if}}, medium:{{../selectedMedium}} }">

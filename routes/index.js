@@ -81,9 +81,8 @@ router.post('/assess', (req, res, next) => {
     q: culture,
     medium,
   })
-    .then(obj => {
-      const questItem = obj.data;
-      console.log(obj.data);
+    .then(questItem => {
+      console.log("The following item was returned:", questItem);
       res.render('details', { questItem });
     })
     .catch(err => console.log(err));

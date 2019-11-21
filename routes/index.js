@@ -38,7 +38,7 @@ router.get('/assess/:medium', (req, res, next) => {
   console.log(selectedMedium);
   Promise.all(getSampleObjects(selectedMedium))
     .then(objects => {
-      //randomize order of objects (shuffle the array)
+      // randomize order of objects (shuffle the array)
       for (let i = objects.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [objects[i], objects[j]] = [objects[j], objects[i]];
@@ -49,6 +49,21 @@ router.get('/assess/:medium', (req, res, next) => {
 });
 
 router.post('/assess/:medium', (req, res, next) => {
+  function isEmpty(obj) {
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) return false;
+    }
+    return true;
+  }
+  if (isEmpty(req.body)) {
+    const media = {
+      Paintings: `painting`,
+      Sculpture: `sculpture`,
+      Furniture: `furniture`,
+      'Musical+instruments': `music`,
+    };
+    return res.redirect(`/assess/${media[req.body.params]}`);
+  }
   const departments = {
     'American Decorative Arts': '1',
     'Ancient Near Eastern Art': '3',

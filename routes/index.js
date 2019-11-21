@@ -49,6 +49,7 @@ router.get('/assess/:medium', (req, res, next) => {
 });
 
 router.post('/assess/:medium', (req, res, next) => {
+  console.log(req.body);
   function isEmpty(obj) {
     for (let key in obj) {
       if (obj.hasOwnProperty(key)) return false;

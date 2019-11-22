@@ -77,9 +77,9 @@ nav a {
 .button-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  height: 250px; }
+  padding-bottom: 3em; }
 
 #welcome-heading {
   padding: 10px 5px 8px 5px;
@@ -108,11 +108,12 @@ nav a {
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  color: white; }
+  color: white;
+  margin: 1em 0; }
 
 main {
-  padding: 0 6vw;
-  margin-top: 12vh; }
+  padding: 10vh 6vw 4vh;
+  background: #f1f1f1; }
 
 /* HIDE RADIO */
 [type=checkbox] {
@@ -144,16 +145,17 @@ main {
   text-align: center; }
 
 .assessment-intro {
-  margin-top: 2em;
+  margin-top: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   line-height: 1.125; }
   .assessment-intro h2 {
-    font-size: 3.8rem; }
+    font-size: 3.3rem; }
   .assessment-intro h3 {
-    font-size: 2.25rem; }
+    font-size: 2.25rem;
+    max-width: 40rem; }
 
 .assessment-form {
   margin-bottom: 2em;
@@ -181,6 +183,7 @@ main {
 .item-img {
   width: 80vw;
   max-width: 400px;
+  margin: auto;
   border-radius: 1%;
   padding: 1em;
   transition-duration: 200ms; }
@@ -261,5 +264,38 @@ main {
   max-width: 100%;
   max-height: 70vh;
   margin: 0 1em; }
+
+/* details page */
+.obj-title {
+  font-size: 2.4rem;
+  color: #901E1B; }
+
+.obj-date {
+  font-size: 2.2rem;
+  color: #444; }
+
+.location {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #444; }
+
+.artist-name {
+  color: #901E1B; }
+
+.item-img {
+  margin: auto; }
+
+.obj-medium {
+  font-weight: 400;
+  font-size: 1.8rem; }
+
+.description {
+  margin: 1em auto; }
+
+.object-creditline {
+  margin: 1em 0;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #444; }
 
 /*# sourceMappingURL=style.css.map */

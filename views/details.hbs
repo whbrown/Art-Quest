@@ -1,15 +1,16 @@
 {{#with questItem}}
-<h1><span class="obj-title">{{title}}</span></h1>
-<h2>Location: <span class="gallery-number">{{location}}</span> — <span class="department-name">{{department}}
+<h1><span class="obj-title">{{title}} </span>(<span class="obj-date">{{objectDate}}</span>)</h1>
+<h2 class="location">Location: <span class="gallery-number">{{location}}</span> — <span
+    class="department-name">{{department}}
     department</span>, <span class="museum-level"></span></h2>
 <img src="{{primaryImageSmall}}" alt="{{title}}" class="item-img">
-<h2>{{artistDisplayName}}</h2>
+<h2 class="artist-name">{{artistDisplayName}}</h2>
 <h3 class="artist-liferange"><span class="artist-begin-date">{{artistBeginDate}}</span>-<span
     class="artist-end-date">{{artistEndDate}}</span></h3>
-<h4><span class="obj-medium">{{medium}}</span> <span class="obj-dimensions">{{dimensions}}</span></h4>
-<p>{{description}}</p>
+<h4 class="obj-medium"><span>{{medium}}</span> <span class="obj-dimensions">{{dimensions}}</span></h4>
+<p class="object-description">{{description}}</p>
 
-<h4>{{creditLine}}</h4>
+<h4 class="object-creditline">{{creditLine}}</h4>
 
 <style>
   main {

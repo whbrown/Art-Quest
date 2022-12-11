@@ -20,7 +20,7 @@
     "debug": "^4.1.1",
     "dotenv": "^6.0.0",
     "event-stream": "^4.0.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-session": "^1.15.6",
     "hbs": "^4.0.1",
     "http-parser-js": "^0.5.2",
